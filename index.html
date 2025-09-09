@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Frutmel Frutas — Frutas Premium</title>
+  <meta name="description" content="Frutmel Frutas — Produção e venda de frutas frescas, direto da fazenda." />
+  <meta property="og:title" content="Frutmel Frutas — Frutas Premium" />
+  <meta property="og:description" content="Produção e venda de frutas frescas, direto da fazenda." />
+  <meta property="og:image" content="link_para_imagem.jpg" /> <!-- Substitua pelo link da imagem -->
+  <meta property="og:url" content="url_do_site" /> <!-- Substitua pela URL do seu site -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fffdf6;
+      --primary: #2c9a3a; /* verde */
+      --accent: #f7b733;  /* amarelo */
+      --muted: #6b6b6b;
+      --max-width: 1100px;
+      --radius: 12px;
+      --gap: 1rem;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: light;
+    }
+
+    /* Fundo */
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg) url("backgroundmamao.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      line-height: 1.45;
+      position: relative;
+      z-index: 0;
+    }
+
+    /* Overlay escuro */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: -1;
+    }
+
+    * { box-sizing: border-box; }
+
+    .container {
+      width: 90%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    /* Header */
+    .site-header {
+      background-color:  linear-gradient(90deg, rgba(44,154,58,0.06), rgba(247,183,51,0.03));
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      gap: .7rem;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    .logo img { border-radius: 8px; }
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+    .main-nav a {
+      text-decoration: none;
+      color: #fff;
+      padding: .45rem .6rem;
+      border-radius: 8px;
+      transition: background .18s, color .18s;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    .main-nav a:hover { background: rgba(44,154,58,0.2); color: #fff; }
+
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3rem 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero-text h1 {
+      margin: 0 0 .5rem;
+      font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    .hero-text p {
+      margin: 0 0 1.2rem;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: .6rem 1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(44,154,58,0.12);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(44,154,58,0.25);
+    }
+
+    /* Texto geral branco com sombra */
+    h1, h2, h3, p, .feature-card p, .card p, .contact-info p, .section-header {
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    .card .price {
+      color: var(--accent);
+      font-weight: 700;
+      text-shadow: none;
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .feature-card {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: var(--radius);
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+    }
+
+    /* Produtos */
+    .section-header { margin-bottom: 1rem; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: rgba(0,0,0,0.3);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      transition: all 0.3s ease;
+    }
+    .card img { width: 100%; border-radius: 8px; object-fit: cover; height: 140px; }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+    }
+
+    /* Galeria */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: .6rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Contato */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 1.2rem;
+    }
+    .contact-grid form {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+    .contact-grid label {
+      display: block;
+      margin-top: .6rem;
+      font-weight: 600;
+      font-size: .92rem;
+    }
+    .contact-grid input, .contact-grid textarea, select {
+      width: 100%;
+      padding: .6rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-top: .25rem;
+    }
+    .contact-info {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding: 1.2rem 0;
+      background: transparent;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    .footer-nav a { margin-left: 1rem; text-decoration: none; color: #fff; }
+
+    /* Scroll reveal */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-up.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsivo */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-toggle { display: block; }
+      .main-nav { position: absolute; right: 1rem; top: 68px; background: rgba(0,0,0,0.9); border-radius: 10px; display: none; padding: 8px; }
+      .main-nav.open { display: block; }
+      .main-nav ul { flex-direction: column; gap: 0; }
+      .main-nav a { display: block; padding: .6rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <img src="logo2.png" alt="Logo da Frutmel" width="40" height="40"/>
+      Frutmel
+    </a>
+    <button class="nav-toggle">☰</button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#gallery">Galeria</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero container fade-up">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1>Frutas frescas direto da fazenda</h1>
+        <p>Descubra nossos produtos premium e saborosos.</p>
+        <a href="#produtos" class="btn-primary">Ver Produtos</a>
+      </div>
+      <div class="hero-image">
+        <img src="frutas-hero.jpg" alt="Variedade de frutas frescas" style="width:100%;border-radius:12px" loading="lazy"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container fade-up">
+    <h2 class="section-header">Sobre Nós</h2>
+    <p>Produzimos frutas de qualidade premium, cultivadas de forma sustentável e entregues com carinho até você.</p>
+    <div class="features">
+      <div class="feature-card fade-up">
+        <h3>Qualidade Premium</h3>
+        <p>Frutas selecionadas e frescas direto da fazenda.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <h3>Entrega Rápida</h3>
+        <p>Seu pedido chega fresco e no prazo combinado.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <h3>Produção Sustentável</h3>
+        <p>Práticas agrícolas que respeitam o meio ambiente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produtos -->
+  <section id="produtos" class="container fade-up">
+    <h2 class="section-header">Nossos Produtos</h2>
+    <div class="products-grid">
+      <div class="card fade-up">
+        <img src="mamao.jpg" alt="Mamão" loading="lazy">
+        <h3>Mamão</h3>
+        <p>Fruta doce e suculenta.</p>
+        <div class="meta"><span class="price">R$ 8,00/kg</span></div>
+      </div>
+      <div class="card fade-up">
+        <img src="maca.jpg" alt="Maçã" loading="lazy">
+        <h3>Maçã</h3>
+        <p>Fruta crocante e saudável.</p>
+        <div class="meta"><span class="price">R$ 6,50/kg</span></div>
+      </div>
+      <div class="card fade-up">
+        <img src="laranja.jpg" alt="Laranja" loading="lazy">
+        <h3>Laranja</h3>
+        <p>Perfeita para sucos refrescantes.</p>
+        <div class="meta"><span class="price">R$ 5,00/kg</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeria -->
+  <section id="gallery" class="container fade-up">
+    <h2 class="section-header">Galeria</h2>
+    <div class="gallery-grid">
+      <img src="Colheita.jpg" alt="Colheita" loading="lazy">
+      <img src="MamaoCaixa.jpg" alt="Cesta de frutas" loading="lazy">
+      <img src="mamões.jpg" alt="Frutas sortidas" loading="lazy">
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contact" class="container fade-up">
+    <h2 class="section-header">Fale Conosco</h2>
+    <div class="contact-grid">
+      <form>
+        <label for="name">Nome</label>
+        <input type="text" id="name" required>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required>
+        <label for="msg">Mensagem</label>
+        <textarea id="msg" rows="4" required></textarea>
+        <button type="submit" class="btn-primary" style="margin-top:1rem">Enviar</button>
+      </form>
+      <div class="contact-info">
+        <h3>Informações</h3>
+        <p>📍 Fazenda Frutmel, Vale Verde - ES</p>
+        <p>📞 (27) 99999-9999</p>
+        <p>✉️ contato@frutmel.com</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; 2025 Frutmel Frutas — Todos os direitos reservados</p>
+    <div class="footer-nav">
+      <a href="#about">Sobre</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contact">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.main-nav');
+navToggle.addEventListener('click', () => {
+  nav.classList.toggle('open');
+});
+
+// Scroll reveal
+const faders = document.querySelectorAll('.fade-up');
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      entry.target.classList.remove('appear'); // Remove a classe ao sair da tela
+      return;
+    }
+    entry.target.classList.add('appear');
+    obs.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader => appearOnScroll.observe(fader));
+</script>
+
+</body>
+</html>
